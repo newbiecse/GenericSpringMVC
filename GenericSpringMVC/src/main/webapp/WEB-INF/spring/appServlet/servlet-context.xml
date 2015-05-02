@@ -64,10 +64,20 @@
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
+	<beans:bean id="productDao" class="com.learnspring.generic.dao.implement.ProductDaoImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	
 	<!-- define SERVICE -->
 	<beans:bean id="personService"
 		class="com.learnspring.generic.service.implement.PersonServiceImpl">
 		<beans:property name="personDAO" ref="personDao"></beans:property>
+	</beans:bean>
+	<beans:bean id="productService"
+		class="com.learnspring.generic.service.implement.ProductServiceImpl">
+		<beans:property name="productDAO" ref="productDao"></beans:property>
 	</beans:bean>
 			
 	
