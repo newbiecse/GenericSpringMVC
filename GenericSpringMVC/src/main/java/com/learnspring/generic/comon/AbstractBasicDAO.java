@@ -16,6 +16,7 @@ import org.hibernate.criterion.Criterion;
 public abstract class AbstractBasicDAO<ENTITY, ID extends Serializable>
 		implements BasicDAO<ENTITY, ID>{
 
+//	private static final Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 	protected final Log log = LogFactory.getLog(getClass());
 
 	private Class<ENTITY> persistentClass;

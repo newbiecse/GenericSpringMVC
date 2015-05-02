@@ -13,7 +13,7 @@ import com.learnspring.generic.model.Person;
 import com.learnspring.generic.service.interfaces.PersonService;
 
 @Controller
-public class PersonController {
+public class PersonController extends BaseController {
 	private PersonService personService;
 	
 	@Autowired(required=true)

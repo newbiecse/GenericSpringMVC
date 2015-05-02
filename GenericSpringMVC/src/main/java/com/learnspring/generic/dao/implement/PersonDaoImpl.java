@@ -1,5 +1,7 @@
 package com.learnspring.generic.dao.implement;
 
+import java.util.List;
+
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
@@ -22,15 +24,15 @@ public class PersonDaoImpl extends AbstractBasicDAO<Person, Integer> implements 
 		log.info("Person updated successfully, Person Details="+p);
 	}
 
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<Person> findAll() {
-//		List<Person> personsList = super.findAll();
-//		for(Person p : personsList){
-//			log.info("Person List::"+p);
-//		}
-//		return personsList;
-//	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Person> findAll() {
+		List<Person> personsList = super.findAll();
+		for(Person p : personsList){
+			log.info("Person List::"+p);
+		}
+		return personsList;
+	}
 
 	@Override
 	public Person getById(int id) {

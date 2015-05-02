@@ -16,7 +16,7 @@ import com.learnspring.generic.service.interfaces.ProductService;
 
 @Controller
 @RequestMapping(value= "/products")
-public class ProductController {
+public class ProductController extends BaseController {
 	
 	private ProductService productService;
 	
@@ -31,6 +31,7 @@ public class ProductController {
 		model.addAttribute("product", new Product());
 		List<Product> listProduct = this.productService.findAll();
 		model.addAttribute("listProduct", listProduct);
+		logger.info("List Product: ");
 		return "/product/product";
 	}
 	
