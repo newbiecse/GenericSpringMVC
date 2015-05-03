@@ -48,7 +48,12 @@
 	<beans:bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="packagesToScan" value="com.learnspring.generic.model" />		
+		<beans:property name="packagesToScan" value="com.learnspring.generic.model" />
+<!-- 		<beans:property name="mappingResources">
+      		<beans:list>
+          		<beans:value>Queries.hbm.xml</beans:value>
+       		</beans:list>
+    	</beans:property> -->		
 		<beans:property name="hibernateProperties">
 			<beans:props>
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
@@ -69,6 +74,10 @@
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
+	<beans:bean id="categoryDao" class="com.learnspring.generic.dao.implement.CategoryDaoImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
 	
 	<!-- define SERVICE -->
 	<beans:bean id="personService"
@@ -79,6 +88,9 @@
 		class="com.learnspring.generic.service.implement.ProductServiceImpl">
 		<beans:property name="productDAO" ref="productDao"></beans:property>
 	</beans:bean>
-			
+	<beans:bean id="categoryService"
+		class="com.learnspring.generic.service.implement.CategoryServiceImpl">
+		<beans:property name="categoryDAO" ref="categoryDao"></beans:property>
+	</beans:bean>			
 	
 </beans:beans>

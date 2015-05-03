@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Product Page</title>
+	<title>Category Page</title>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/css/product.css" />" rel="stylesheet">
 	<style>
@@ -24,14 +24,14 @@
 <body>
 
 <h1>
-	Add a product
+	Add a category
 </h1>
 
-<c:url var="addAction" value="/products/add" ></c:url>
+<c:url var="addAction" value="/categories/add" ></c:url>
 
-<form:form action="${addAction}" commandName="product">
+<form:form action="${addAction}" commandName="category">
 <table>
-	<c:if test="${!empty product.name}">
+	<c:if test="${!empty category.name}">
 	<tr>
 		<td>
 			<form:label path="id">
@@ -58,11 +58,11 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<c:if test="${!empty product.name}">
+			<c:if test="${!empty category.name}">
 				<input type="submit"
 					value="<spring:message text="Edit Product"/>" />
 			</c:if>
-			<c:if test="${empty product.name}">
+			<c:if test="${empty category.name}">
 				<input type="submit" class="btn btn-success"
 					value="<spring:message text="Add Product"/>" />
 			</c:if>
@@ -71,21 +71,21 @@
 </table>	
 </form:form>
 <br>
-<h3>Product List</h3>
-<c:if test="${!empty listProduct}">
+<h3>Category List</h3>
+<c:if test="${!empty listCategory}">
 	<table class="tg">
 	<tr>
-		<th width="80">product ID</th>
-		<th width="120">product Name</th>
+		<th width="80">category ID</th>
+		<th width="120">category Name</th>
 		<th width="60">Edit</th>
 		<th width="60">Delete</th>
 	</tr>
-	<c:forEach items="${listProduct}" var="product">
+	<c:forEach items="${listCategory}" var="category">
 		<tr>
-			<td>${product.id}</td>
-			<td>${product.name}</td>
-			<td><a href="<c:url value='/products/edit/${product.id}' />" >Edit</a></td>
-			<td><a href="<c:url value='/products/remove/${product.id}' />" >Delete</a></td>
+			<td>${category.id}</td>
+			<td>${category.name}</td>
+			<td><a href="<c:url value='/products/edit/${category.id}' />" >Edit</a></td>
+			<td><a href="<c:url value='/products/remove/${category.id}' />" >Delete</a></td>
 		</tr>
 	</c:forEach>
 	</table>
