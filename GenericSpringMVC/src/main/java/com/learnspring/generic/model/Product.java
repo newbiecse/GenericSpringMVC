@@ -25,6 +25,8 @@ public class Product {
 	@Size(min=2, max=30)
 	private String name;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="category_id")	
 	private Category category;
 	
 	//Hibernate requires no-args constructor
@@ -57,8 +59,8 @@ public class Product {
 		return "id="+id+", name="+name;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="category_id", nullable = false)
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name="category_id", nullable = false)
 	public Category getCategory() {
 		return category;
 	}

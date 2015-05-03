@@ -77,6 +77,7 @@
 	<tr>
 		<th width="80">product ID</th>
 		<th width="120">product Name</th>
+		<th width="120">Category</th>
 		<th width="60">Edit</th>
 		<th width="60">Delete</th>
 	</tr>
@@ -84,6 +85,7 @@
 		<tr>
 			<td>${product.id}</td>
 			<td>${product.name}</td>
+			<td>${product.getCategory().getName()}</td>
 			<td><a href="<c:url value='/products/edit/${product.id}' />" >Edit</a></td>
 			<td><a href="<c:url value='/products/remove/${product.id}' />" >Delete</a></td>
 		</tr>

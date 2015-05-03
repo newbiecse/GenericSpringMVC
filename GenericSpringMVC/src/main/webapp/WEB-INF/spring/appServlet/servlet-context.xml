@@ -53,7 +53,7 @@
       		<beans:list>
           		<beans:value>Queries.hbm.xml</beans:value>
        		</beans:list>
-    	</beans:property> -->		
+    	</beans:property> -->
 		<beans:property name="hibernateProperties">
 			<beans:props>
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect

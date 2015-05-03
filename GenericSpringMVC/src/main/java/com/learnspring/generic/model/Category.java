@@ -34,6 +34,7 @@ public class Category implements Serializable {
 	private String name;
 
 	@ElementCollection(targetClass=Product.class)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
 	private Set<Product> product;
 
 	/** getter & setter */
@@ -58,7 +59,6 @@ public class Category implements Serializable {
 		return "id=" + id + ", name=" + name;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
 	public Set<Product> getProduct() {
 		return product;
 	}
