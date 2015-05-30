@@ -53,9 +53,19 @@
 		<td>
 			<form:input path="name" />
 			<form:errors path="*" cssClass="error" element="div" />
-			
 		</td> 
 	</tr>
+	<tr>
+		<td>
+			<form:label path="category">
+				<spring:message text="category"/>
+			</form:label>
+		</td>
+		<td>
+			<form:select path="category.id"  items="${categories}" >
+			</form:select>
+		</td> 
+	</tr>	
 	<tr>
 		<td colspan="2">
 			<c:if test="${!empty product.name}">

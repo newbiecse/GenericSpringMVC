@@ -1,6 +1,9 @@
 package com.learnspring.generic.controller;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -9,11 +12,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.learnspring.generic.model.Category;
 import com.learnspring.generic.model.Product;
+import com.learnspring.generic.service.interfaces.CategoryService;
 import com.learnspring.generic.service.interfaces.ProductService;
 
 @Controller
@@ -21,7 +27,14 @@ import com.learnspring.generic.service.interfaces.ProductService;
 public class ProductController extends BaseController {
 	
 	private ProductService productService;
+	private CategoryService categoryService;
 	
+	@Autowired(required=true)
+	@Qualifier(value="categoryService")	
+	public void setCategoryService(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
+
 	@Autowired(required=true)
 	@Qualifier(value="productService")
 	public void setProductService(ProductService ps){
@@ -32,15 +45,26 @@ public class ProductController extends BaseController {
 	public String listProducts(Model model) {
 		model.addAttribute("product", new Product());
 		List<Product> listProduct = this.productService.findAll();
+		List<Category> listCategory = this.categoryService.findAll();
+//		Map< String, String > categories = new LinkedHashMap<string, string>();  
 		model.addAttribute("listProduct", listProduct);
-		logger.info("List Product: ");
+		
+		Map referenceData = new HashMap();
+		Map<String,String> categories = new LinkedHashMap<String,String>();
+		for(Category c : listCategory) {
+			categories.put(c.getId() + "", c.getName());
+		}
+		model.addAttribute("categories", categories);
+		
 		return "/product/product";
 	}
 	
 	//For add and update person both
 	@RequestMapping(value= "/add", method = RequestMethod.POST)
 //	public String add(@ModelAttribute("product") Product p){
-	public String add(@Valid Product p, BindingResult bindingResult){
+	public String add(@ModelAttribute Product p, BindingResult bindingResult,
+			 Model model,
+		        @ModelAttribute("category") Category category){
 		
 		if (bindingResult.hasErrors()) {
 			return "/product/productErrors";

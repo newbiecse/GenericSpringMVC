@@ -26,6 +26,7 @@ public class Product {
 	private String name;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+//	@NotEmpty
 	@JoinColumn(name="category_id")	
 	private Category category;
 	
