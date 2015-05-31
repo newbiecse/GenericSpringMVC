@@ -20,6 +20,7 @@
 	
 	<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
 	<script src="<c:url value="/resources/js/person.js" />"></script>
+	<script src="<c:url value="/resources/js/product.js" />"></script>
 </head>
 <body>
 
@@ -29,7 +30,7 @@
 
 <c:url var="addAction" value="/products/add" ></c:url>
 
-<form:form action="${addAction}" commandName="product">
+<form:form id="productForm" action="${addAction}" commandName="product">
 <table>
 	<c:if test="${!empty product.name}">
 	<tr>
