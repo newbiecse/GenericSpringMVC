@@ -25,7 +25,7 @@ public class Product {
 	@Size(min=2, max=30)
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(/*fetch = FetchType.EAGER*/)
 //	@NotEmpty
 	@JoinColumn(name="category_id")	
 	private Category category;

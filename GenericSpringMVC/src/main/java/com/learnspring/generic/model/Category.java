@@ -3,13 +3,14 @@ package com.learnspring.generic.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -33,8 +34,13 @@ public class Category implements Serializable {
 	@Size(min = 2, max = 30)
 	private String name;
 
-	@ElementCollection(targetClass=Product.class)
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+//	@ElementCollection(targetClass=Product.class)
+	@OneToMany(/*fetch = FetchType.LAZY,*/ mappedBy = "category", cascade=CascadeType.ALL)
+//	@JoinTable(
+//            name="PRODUCT",
+//            joinColumns = @JoinColumn( name="CATEGORY_ID"),
+//            inverseJoinColumns = @JoinColumn( name="ID")
+//    )
 	private Set<Product> product;
 
 	/** getter & setter */

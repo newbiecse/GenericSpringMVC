@@ -79,18 +79,18 @@ public class ProductController extends BaseController {
 			this.productService.update(p);
 		}
 		
-		Product p1 = new Product();
-		p1.setId(1);
-		p1.setName("new product");
+//		Product p1 = new Product();
+//		p1.setId(1);
+//		p1.setName("new product");
+////		Category c1 = this.categoryService.getById(2);
+////		p1.setCategory(c1);
 //		Category c1 = this.categoryService.getById(2);
+//		c1.setProduct(null);
 //		p1.setCategory(c1);
-		Category c1 = this.categoryService.getById(2);
-		c1.setProduct(null);
-		p1.setCategory(c1);
 
 		
-//		return p;
-		return p1;
+		return p;
+//		return p1;
 		
 	}	
 	
