@@ -1,8 +1,9 @@
 package com.learnspring.generic.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name="PRODUCT")
+@Table(name="product")
 public class Product {
 	@Id
 	@Column(name="id")
@@ -24,6 +25,11 @@ public class Product {
 	@NotEmpty
 	@Size(min=2, max=30)
 	private String name;
+	
+	private Float price;
+	
+	@Column(name = "create_date")
+	private Date createDate;
 	
 	@ManyToOne(/*fetch = FetchType.EAGER*/)
 //	@NotEmpty
@@ -68,6 +74,22 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	
 //	@ManyToOne(fetch = FetchType.LAZY)

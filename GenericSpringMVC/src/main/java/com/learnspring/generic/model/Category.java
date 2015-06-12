@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "CATEGORY")
+@Table(name = "category")
 public class Category implements Serializable {
 	/**
 	 * 

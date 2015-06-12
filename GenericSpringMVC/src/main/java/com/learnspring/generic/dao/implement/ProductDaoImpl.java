@@ -46,11 +46,11 @@ public class ProductDaoImpl extends AbstractBasicDAO<Product, Integer> implement
 		}
 		log.info("Person deleted successfully, person details="+p);
 	}
-	@Override
-	public Product save(Product p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public Product save(Product p) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public Query createQuery(String sql) {
