@@ -1,9 +1,16 @@
 <html>
+	<head>
+		<style>
+			.username {
+				color: red;
+			}
+		</style>
+	</head>
     <body>
-        <h3>Hi ${user}, welcome to the Chipping Sodbury On-the-Hill message boards!</h3>
+        <h3>Hi <span style="color: red" class="username">${user}</span>, welcome to Demo!</h3>
 
         <div>
-            Your email address is <a href="mailto:${user}">${user.emailAddress}</a>.
+            Your email address is 
         </div>
     </body>
  </html>
