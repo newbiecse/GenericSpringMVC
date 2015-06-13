@@ -3,6 +3,7 @@ package com.learnspring.generic.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Locale;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadController extends BaseController {
 	
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.GET)
-	public String uploadFileHandlerGet() {
+	public String uploadFileHandlerGet(Locale locale) {
 		return "upload";
 	}
 	
