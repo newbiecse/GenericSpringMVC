@@ -9,6 +9,10 @@
 </head>
 <body>
  
+ 	<div>
+ 		<img src="<c:url value="/resources/images/Logo_Spring.png" />" />
+ 	</div>
+ 
     <form method="POST" action="uploadFile" enctype="multipart/form-data">
         File to upload: <input type="file" name="file"><br /> 
         <input type="submit" value="Upload"> <spring:message code="label.title" />

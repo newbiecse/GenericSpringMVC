@@ -48,7 +48,10 @@ public class MailMail {
 			
 			String text = VelocityEngineUtils.mergeTemplateIntoString(
                     velocityEngine, "com/learnspring/generic/template/templateEmail.vm", model);
+//			String text = VelocityEngineUtils.mergeTemplateIntoString(
+//                    velocityEngine, "webapp/WEB-INF/template/templateEmail.vm", model);
 			
+            
 			helper.setText(text, true);			
 			
 //			FileSystemResource file = new FileSystemResource("C:\\log.txt");
