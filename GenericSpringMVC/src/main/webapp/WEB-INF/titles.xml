@@ -4,22 +4,22 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>  
     <definition name="DefaultTemplate"  
-        template="/WEB-INF/views/jsp/layout.jsp">  
+        template="/WEB-INF/views/shared/template/layout.jsp">  
         <put-attribute name="title" value="test" />  
-        <put-attribute name="header" value="/WEB-INF/views/jsp/header.jsp" />  
-        <put-attribute name="menu" value="/WEB-INF/views/jsp/menu.jsp" />  
+        <put-attribute name="header" value="/WEB-INF/views/shared/partials/header.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/views/shared/partials/menu.jsp" />  
         <put-attribute name="body" value="" />  
-        <put-attribute name="footer" value="/WEB-INF/views/jsp/footer.jsp" />  
+        <put-attribute name="footer" value="/WEB-INF/views/shared/partials/footer.jsp" />  
     </definition>  
   
     <definition name="contact" extends="DefaultTemplate">  
         <put-attribute name="title" value="Contact Manager" />  
-        <put-attribute name="body" value="/WEB-INF/views/jsp/contact.jsp" />  
+        <put-attribute name="body" value="/WEB-INF/views/contact/contact.jsp" />  
     </definition>  
   
     <definition name="hello" extends="DefaultTemplate">  
         <put-attribute name="title" value="Hello" />
-        <put-attribute name="body" value="/WEB-INF/views/jsp/hello.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/hello/hello.jsp" />
     </definition>  
   
 </tiles-definitions>

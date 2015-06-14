@@ -15,6 +15,6 @@ public class ContactController {
       
     @RequestMapping("/contact")  
     public ModelAndView showContacts() {  
-        return new ModelAndView("jsp/contact");  
+        return new ModelAndView("contact");  
     }  
 }  
