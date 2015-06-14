@@ -39,18 +39,6 @@
         </beans:property> 
     </beans:bean>  		
 	
-	<!-- <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
-	</beans:bean>
- -->
-<!-- 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-		<beans:property name="definitions">
-		<beans:list>
-			<beans:value>/WEB-INF/layouts/layouts.xml</beans:value>
-			<beans:value>/WEB-INF/layouts/views.xml</beans:value>
-		</beans:list>
-		</beans:property>
-	</beans:bean>
- -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -95,6 +83,62 @@
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
+	
+
+
+
+	<!-- For times when you just need to invoke a method on a specific object -->
+    <beans:bean id="simpleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <beans:property name="targetObject" ref="myBean"></beans:property>
+        <beans:property name="targetMethod" value="printMessage"></beans:property>
+    </beans:bean>
+ 
+ 
+    <!-- For times when you need more complex processing, passing data to the scheduled job -->
+    <beans:bean name="complexJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <beans:property name="jobClass" value="com.learnspring.generic.scheduller.ScheduledJob"></beans:property>
+        <beans:property name="jobDataMap">
+            <beans:map>
+                <beans:entry key="anotherBean" value-ref="anotherBean"></beans:entry>
+            </beans:map>
+        </beans:property>
+        <beans:property name="durability" value="true"></beans:property>
+    </beans:bean>
+ 
+ 
+    <!-- Run the job every 2 seconds with initial delay of 1 second -->
+    <beans:bean id="simpleTrigger"  class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <beans:property name="jobDetail" ref="simpleJobDetail"></beans:property>
+        <beans:property name="startDelay" value="1000"></beans:property>
+        <beans:property name="repeatInterval" value="2000"></beans:property>
+    </beans:bean>
+ 
+ 
+    <!-- Run the job every 5 seconds only on Weekends -->
+    <beans:bean id="cronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <beans:property name="jobDetail" ref="complexJobDetail"></beans:property>
+        <beans:property name="cronExpression" value="0/5 * * ? * SAT-SUN"></beans:property>
+    </beans:bean>
+ 
+ 
+    <!-- Scheduler factory bean to glue together jobDetails and triggers to Configure Quartz Scheduler -->
+    <beans:bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <beans:property name="jobDetails">
+            <beans:list>
+                <beans:ref bean="simpleJobDetail"></beans:ref>
+                <beans:ref bean="complexJobDetail"></beans:ref>
+            </beans:list>
+        </beans:property>
+ 
+        <beans:property name="triggers">
+            <beans:list>
+                <beans:ref bean="simpleTrigger" />
+                <beans:ref bean="cronTrigger" />
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+
+
 	
 	<!-- ***************MY CONFIG*************** -->
 	
